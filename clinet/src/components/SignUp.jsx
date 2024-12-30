@@ -3,7 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 const SignUp = () => {
+      const navigate = useNavigate();
+    
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -42,6 +46,9 @@ const SignUp = () => {
                 password: formData.password,
                 confirmpassword: formData.confirmpassword
             });
+            if(response){
+                navigate('/login')
+            }
             console.log('Registration successful:', response);
             // Redirect or show success message
         } catch (error) {
