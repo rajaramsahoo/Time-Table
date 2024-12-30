@@ -9,7 +9,7 @@ const TimeTableAPI = require("./routes/timeTableRoutes.js");
 // // app.use(cors());
 app.use(express.json());
 const corsOptions = {
-  origin: ['http://localhost:5174', '*' ],
+  origin: ['http://localhost:5174', '*' ,'time-table-frontend-mu.vercel.app'],
   credentials: true, 
   methods: ['OPTIONS','GET', 'POST', 'PUT', 'PATCH', 'DELETE' ],
 };
