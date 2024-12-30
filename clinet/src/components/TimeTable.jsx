@@ -40,7 +40,7 @@ const TimeTable = () => {
         localStorage.setItem("timeTableData", JSON.stringify(updatedTimetable));
 
         try {
-            const update = await axios.put(`http://localhost:3001/api/v2/timetables/update/${timetable._id}`, { timetableData: updatedTimetable });
+            const update = await axios.put(`https://time-table-backend-6pp1.onrender.com/api/v2/timetables/update/${timetable._id}`, { timetableData: updatedTimetable });
             console.log(updatedTimetable)
             console.log(update.data);
             setShow(false);

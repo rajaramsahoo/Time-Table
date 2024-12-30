@@ -4,7 +4,6 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import SignUp from './components/SignUp';
 import TimeTable from './components/TimeTable';
-import Table from './components/Table';
 function App() {
 
   return (
@@ -15,7 +14,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/timetable" element={<TimeTable />} />
-        <Route path="/time" element={<Table />} />
 
       </Routes>
 

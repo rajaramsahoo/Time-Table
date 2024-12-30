@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 const SignUp = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -35,12 +35,12 @@ const SignUp = () => {
 
         // Send data to the backend
         try {
-            const response = await axios.post('http://localhost:3001/api/v1/signup', {
+            const response = await axios.post('https://time-table-backend-6pp1.onrender.com/api/v1/signup', {
                 name: formData.name,
                 email: formData.email,
                 phone: formData.phone,
                 password: formData.password,
-                confirmpassword:formData.confirmpassword
+                confirmpassword: formData.confirmpassword
             });
             console.log('Registration successful:', response);
             // Redirect or show success message
@@ -117,9 +117,10 @@ const SignUp = () => {
 
                 <p className="text-center mt-3">
                     Have an account?{" "}
-                    <a href="/login" className="text-primary">
+
+                    <Link to="/login" className="text-primary">
                         Login here
-                    </a>
+                    </Link>
                 </p>
             </Form>
         </div>

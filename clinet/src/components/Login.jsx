@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function Login() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -17,7 +18,7 @@ function Login() {
     try {
       event.preventDefault();
       const user = JSON.parse(localStorage.getItem("user"));
-      const response = await axios.get(`http://localhost:3001/api/v2/timetables/${user._id}?whichClass=${classNumber}`);
+      const response = await axios.get(`https://time-table-backend-6pp1.onrender.com/api/v2/timetables/${user._id}?whichClass=${classNumber}`);
       alert(response.data.message)
       console.log(response.data.allTimeTables[0].classStartTime)
       localStorage.setItem("timeTableData", JSON.stringify(response.data.allTimeTables[0]));
@@ -55,7 +56,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:3001/api/v1/login', {
+      const response = await axios.post('https://time-table-backend-6pp1.onrender.com/api/v1/login', {
         email: formData.email,
         password: formData.password,
       });
@@ -114,7 +115,7 @@ function Login() {
       };
 
       const response = await axios.post(
-        "http://localhost:3001/api/v2/createtimetable",
+        "https://time-table-backend-6pp1.onrender.com/api/v2/createtimetable",
         {
           ...timeTableData,
           breakAfterWhichPeriod: typeof timeTableData.breakAfterWhichPeriod === "string" ? timeTableData.breakAfterWhichPeriod.split(",") : [],
@@ -138,7 +139,7 @@ function Login() {
     localStorage.clear();
 
     navigate("/login");
-};
+  };
 
   return (
 
@@ -178,9 +179,10 @@ function Login() {
             </Button>
             <p className="text-center mt-3">
               Don't have an account?{" "}
-              <a href="/signup" className="text-primary">
+              <Link to='/signup' className="text-primary" >
                 Register Here
-              </a>
+              </Link>
+
             </p>
           </Form>
         </div>
@@ -297,154 +299,7 @@ function Login() {
                   ))}
                 </>
               )}
-              {/* {selectedOption === "1" && (
-                <Form>
-                  <Form.Group className="mb-1" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>Break 1:after the period of</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakAfterWhichPeriod"
-                      value={timeTableData.breakAfterWhichPeriod}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>  <Form.Group className="mb-3" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Duration of this break(in mins)</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakDuration"
-                      value={timeTableData.breakDuration}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
 
-                </Form>
-
-              )}
-              {selectedOption === "2" && (
-                <Form>
-
-                  <Form.Group className="mb-1" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>Break 1:after the period of</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakAfterWhichPeriod"
-                      value={timeTableData.breakAfterWhichPeriod}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-4" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Duration of this break(in mins)</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakDuration"
-                      value={timeTableData.breakDuration}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-
-                  <Form.Group className="mb-1" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Break 2:after the period of</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakAfterWhichPeriod"
-                      value={timeTableData.breakAfterWhichPeriod}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Duration of this break(in mins)</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakDuration"
-                      value={timeTableData.breakDuration}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-
-                </Form>
-
-              )}
-              {selectedOption === "3" && (
-                <Form>
-                  <Form.Group className="" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>Break 1:after the period of</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakAfterWhichPeriod"
-                      value={timeTableData.breakAfterWhichPeriod}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>  <Form.Group className="mb-4" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Duration of this break(in mins)</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakDuration"
-                      value={timeTableData.breakDuration}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-1" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Break 2:after the period of</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakAfterWhichPeriod"
-                      value={timeTableData.breakAfterWhichPeriod}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-4" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Duration of this break(in mins)</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakDuration"
-                      value={timeTableData.breakDuration}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-1" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Break 3:after the period of</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakAfterWhichPeriod"
-                      value={timeTableData.breakAfterWhichPeriod}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group className="mb-3" controlId="formBasicInput">
-                    <Form.Label className="mb-1 " style={{ fontSize: "14px" }}>
-                      Duration of this break(in mins)</Form.Label>
-                    <Form.Control
-                      type="number"
-                      className="form-control-sm"
-                      name="breakDuration"
-                      value={timeTableData.breakDuration}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-
-
-                </Form>
-
-              )} */}
               <Button variant="primary" type="submit" className="btn-sm" onClick={handleSubmit}>
                 SUBMIT
               </Button>
