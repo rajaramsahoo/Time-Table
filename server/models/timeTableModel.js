@@ -3,7 +3,6 @@ const timeTableSchema = new mongoose.Schema({
     whichClass: {
         type: Number,
         required: true,
-        unique: true,
     },
     noOfDays: {
         type: Number,

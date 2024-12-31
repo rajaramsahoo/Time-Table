@@ -34,10 +34,13 @@ const createTimeTable = async (req, res) => {
             breakDuration: breakDuration[index],
         }));
 
+        // Check if the user is logged in
         let userFound = await userModel.findById(req.user._id);
         if (!userFound) {
             return res.status(404).json({ error: 'Please Login' });
         }
+
+        // Check if a timetable already exists for the user and class
         const existingTimetable = await timeTableModel.findOne({ userId: req.user._id, whichClass });
         if (existingTimetable) {
             return res.status(400).json({
@@ -45,6 +48,7 @@ const createTimeTable = async (req, res) => {
             });
         }
 
+        // Create a new timetable
         const newTimeTable = await new timeTableModel({
             whichClass,
             noOfDays,
@@ -59,6 +63,14 @@ const createTimeTable = async (req, res) => {
         res.status(201).json({ message: 'TimeTable created successfully', newTimeTable });
     } catch (error) {
         console.error(error);
+
+        // Handle duplicate key error specifically
+        if (error.code === 11000) {
+            return res.status(400).json({
+                error: `Duplicate key error: A timetable for class already exists.`,
+            });
+        }
+
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
@@ -81,7 +93,7 @@ const userAllTimeTables = async (req, res) => {
             return res.status(200).send({
                 success: true,
                 message: whichClass ? `No timetable found for class ${whichClass}` : "No timetables found for this user",
-                allTimeTables: [],
+                allTimeTables: {},
             });
         }
 

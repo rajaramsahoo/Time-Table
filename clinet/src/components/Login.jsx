@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert'
@@ -18,14 +18,24 @@ function Login() {
     try {
       event.preventDefault();
       const user = JSON.parse(localStorage.getItem("user"));
+      console.log(user)
       const response = await axios.get(`https://time-table-backend-6pp1.onrender.com/api/v2/timetables/${user._id}?whichClass=${classNumber}`);
       alert(response.data.message)
-      console.log(response.data.allTimeTables[0].classStartTime)
-      localStorage.setItem("timeTableData", JSON.stringify(response.data.allTimeTables[0]));
-      navigate('/timetable')
+      console.log(response.data.allTimeTables)
+      if (response.data.allTimeTables && response.data.allTimeTables.length > 0) {
+        localStorage.setItem("timeTableData", JSON.stringify(response.data.allTimeTables[0]));
+        navigate('/timetable')
+      }
+      else {
+        alert(response.data.message)
+
+        navigate('/login')
+      }
 
     } catch (error) {
       console.error("Error fetching timetable:", error);
+      navigate("/login");
+
     }
 
   };
@@ -87,8 +97,8 @@ function Login() {
     noOfPeriod: "",
     classStartTime: "",
     durationOfEachClass: "",
-    breakAfterWhichPeriod: '',
-    breakDuration: "",
+    breakAfterWhichPeriod: [],
+    breakDuration: [],
   });
   const handleSelectChange = (e) => {
     console.log(selectedOption)
@@ -113,22 +123,22 @@ function Login() {
       const headers = {
         Authorization: `Bearer ${token}`,
       };
-
+const payload = {
+  ...timeTableData,
+}
       const response = await axios.post(
-        "https://time-table-backend-6pp1.onrender.com/api/v2/createtimetable",
-        {
-          ...timeTableData,
-          breakAfterWhichPeriod: typeof timeTableData.breakAfterWhichPeriod === "string" ? timeTableData.breakAfterWhichPeriod.split(",") : [],
-          breakDuration: typeof timeTableData.breakDuration === "string" ? timeTableData.breakDuration.split(",") : [],
-        },
-        { headers }
+        "http://localhost:3001/api/v2/createtimetable",payload, { headers }
+       
       );
-
-      if (response.status === 201) {
+      console.log(response.data.newTimeTable)
+      console.log()
+      if (response.data.newTimeTable) {
         alert("TimeTable created successfully!");
-        localStorage.setItem("timeTableData", JSON.stringify(response.data.allTimeTables[0]));
         navigate('/timetable')
+
+        localStorage.setItem("timeTableData", JSON.stringify(response.data.newTimeTable));
       }
+
     } catch (error) {
       console.error("Error creating timetable:", error);
       alert(error.response?.data?.error || "Something went wrong!");
@@ -140,7 +150,15 @@ function Login() {
 
     navigate("/login");
   };
-
+  useEffect(() => {
+    if (selectedOption) {
+      settimeTablemData((prevData) => ({
+        ...prevData,
+        breakAfterWhichPeriod: Array(Number(selectedOption)).fill(''),
+        breakDuration: Array(Number(selectedOption)).fill(''),
+      }));
+    }
+  }, [selectedOption]);
   return (
 
 
@@ -276,6 +294,7 @@ function Login() {
                           onChange={(e) => {
                             const newBreakAfterWhichPeriod = [...timeTableData.breakAfterWhichPeriod];
                             newBreakAfterWhichPeriod[index] = e.target.value;
+                            console.log({ ...timeTableData, breakAfterWhichPeriod: newBreakAfterWhichPeriod })
                             settimeTablemData({ ...timeTableData, breakAfterWhichPeriod: newBreakAfterWhichPeriod });
                           }}
                         />

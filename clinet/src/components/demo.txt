@@ -1,0 +1,275 @@
+const data = {
+    "success": true,
+    "message": "All timetables of the user",
+    "allTimeTables": [
+        {
+            "_id": "6772ef3ae398890d53583eb0",
+            "whichClass": 1,
+            "noOfDays": 5,
+            "noOfPeriod": 7,
+            "classStartTime": "10:23",
+            "durationOfEachClass": 43,
+            "breakes": [
+                {
+                    "breakNumber": 1,
+                    "breakAfterWhichPeriod": "1",
+                    "breakDuration": 23,
+                    "_id": "6772ef3ae398890d53583eb1"
+                },
+                {
+                    "breakNumber": 2,
+                    "breakAfterWhichPeriod": "4",
+                    "breakDuration": 22,
+                    "_id": "6772ef3ae398890d53583eb2"
+                }
+            ],
+            "days": [
+                {
+                    "day": "Monday",
+                    "periods": [
+                        {
+                            "periodNo": "Period 1",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eb4"
+                        },
+                        {
+                            "periodNo": "Period 2",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eb5"
+                        },
+                        {
+                            "periodNo": "Period 3",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eb6"
+                        },
+                        {
+                            "periodNo": "Period 4",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eb7"
+                        },
+                        {
+                            "periodNo": "Period 5",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eb8"
+                        },
+                        {
+                            "periodNo": "Period 6",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eb9"
+                        },
+                        {
+                            "periodNo": "Period 7",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eba"
+                        }
+                    ],
+                    "_id": "6772ef3ae398890d53583eb3"
+                },
+                {
+                    "day": "Tuesday",
+                    "periods": [
+                        {
+                            "periodNo": "Period 1",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ebc"
+                        },
+                        {
+                            "periodNo": "Period 2",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ebd"
+                        },
+                        {
+                            "periodNo": "Period 3",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ebe"
+                        },
+                        {
+                            "periodNo": "Period 4",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ebf"
+                        },
+                        {
+                            "periodNo": "Period 5",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec0"
+                        },
+                        {
+                            "periodNo": "Period 6",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec1"
+                        },
+                        {
+                            "periodNo": "Period 7",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec2"
+                        }
+                    ],
+                    "_id": "6772ef3ae398890d53583ebb"
+                },
+                {
+                    "day": "Wednesday",
+                    "periods": [
+                        {
+                            "periodNo": "Period 1",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec4"
+                        },
+                        {
+                            "periodNo": "Period 2",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec5"
+                        },
+                        {
+                            "periodNo": "Period 3",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec6"
+                        },
+                        {
+                            "periodNo": "Period 4",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec7"
+                        },
+                        {
+                            "periodNo": "Period 5",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec8"
+                        },
+                        {
+                            "periodNo": "Period 6",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ec9"
+                        },
+                        {
+                            "periodNo": "Period 7",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eca"
+                        }
+                    ],
+                    "_id": "6772ef3ae398890d53583ec3"
+                },
+                {
+                    "day": "Thursday",
+                    "periods": [
+                        {
+                            "periodNo": "Period 1",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ecc"
+                        },
+                        {
+                            "periodNo": "Period 2",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ecd"
+                        },
+                        {
+                            "periodNo": "Period 3",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ece"
+                        },
+                        {
+                            "periodNo": "Period 4",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ecf"
+                        },
+                        {
+                            "periodNo": "Period 5",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed0"
+                        },
+                        {
+                            "periodNo": "Period 6",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed1"
+                        },
+                        {
+                            "periodNo": "Period 7",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed2"
+                        }
+                    ],
+                    "_id": "6772ef3ae398890d53583ecb"
+                },
+                {
+                    "day": "Friday",
+                    "periods": [
+                        {
+                            "periodNo": "Period 1",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed4"
+                        },
+                        {
+                            "periodNo": "Period 2",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed5"
+                        },
+                        {
+                            "periodNo": "Period 3",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed6"
+                        },
+                        {
+                            "periodNo": "Period 4",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed7"
+                        },
+                        {
+                            "periodNo": "Period 5",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed8"
+                        },
+                        {
+                            "periodNo": "Period 6",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583ed9"
+                        },
+                        {
+                            "periodNo": "Period 7",
+                            "subject": "",
+                            "teacher": "",
+                            "_id": "6772ef3ae398890d53583eda"
+                        }
+                    ],
+                    "_id": "6772ef3ae398890d53583ed3"
+                }
+            ],
+            "userId": "67726a5eaa9aa1e1f318eb96",
+            "createdAt": "2024-12-30T19:06:34.969Z",
+            "updatedAt": "2024-12-30T19:06:34.969Z",
+            "__v": 0
+        }
+    ]
+}
+create table having no periods the table head will be the period 1 period 2 period 3 like that each table head will be the time means period 1 with class start time + duration of class like that 

@@ -65,6 +65,19 @@ const TimeTable = () => {
         navigate("/login");
     };
 
+
+
+const everyDays = (listOgBreak,listOfPeriods) => {
+    //1-see the list of break
+    //2-see the list of period
+    //3-create New array of periods where periods and breaks are included based on the hyrarkey
+}
+
+
+
+
+
+
     return (
         <div className="m-3" style={{ paddingLeft: '210px', paddingRight: '210px' }}>
             <h6 className="text-center mb-4">Time Table - Class {timetable.whichClass}</h6>
@@ -107,7 +120,7 @@ const TimeTable = () => {
                                             period.subject !== "Break" && handleShow(rowIndex, periodIndex)
                                         }
                                     >
-                                        {period.subject === "Break" ? (
+                                        {period.periodNo === "Break" ? (
                                             <div className="text-center">Break</div>
                                         ) : (
                                             <div className="flex flex-col">
