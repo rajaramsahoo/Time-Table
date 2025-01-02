@@ -9,7 +9,6 @@ const createTimeTable = async (req, res) => {
             noOfPeriod,
             classStartTime,
             durationOfEachClass,
-            breakNumber,
             breakAfterWhichPeriod,
             breakDuration
         } = req.body;
@@ -59,10 +58,10 @@ const createTimeTable = async (req, res) => {
             days,
             userId: req.user._id,
         }).save();
-
+console.log(req.user._id)
         res.status(201).json({ message: 'TimeTable created successfully', newTimeTable });
     } catch (error) {
-        console.error(error);
+        console.log(error);
 
         // Handle duplicate key error specifically
         if (error.code === 11000) {

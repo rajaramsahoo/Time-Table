@@ -127,7 +127,7 @@ const payload = {
   ...timeTableData,
 }
       const response = await axios.post(
-        "http://localhost:3001/api/v2/createtimetable",payload, { headers }
+        "http://localhost:3001/api/v2/createtimetable",timeTableData, { headers }
        
       );
       console.log(response.data.newTimeTable)

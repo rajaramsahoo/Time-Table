@@ -7,7 +7,7 @@ const timeTableSchema = new mongoose.Schema({
     noOfDays: {
         type: Number,
         required: true,
-
+        
     },
     noOfPeriod: {
         type: Number,

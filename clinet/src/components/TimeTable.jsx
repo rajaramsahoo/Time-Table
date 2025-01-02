@@ -67,11 +67,6 @@ const TimeTable = () => {
 
 
 
-const everyDays = (listOgBreak,listOfPeriods) => {
-    //1-see the list of break
-    //2-see the list of period
-    //3-create New array of periods where periods and breaks are included based on the hyrarkey
-}
 
 
 

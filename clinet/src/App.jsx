@@ -15,9 +15,9 @@ function App() {
         <Route path="*" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/timetable" element={<TimeTable />} />
-        <Route path="/time" element={<Demo />} />
-        <Route path="/timetable1" element={<TimaTable1 />} />
+        {/* <Route path="/timetable1" element={<TimeTable />} />
+        <Route path="/time" element={<Demo />} /> */}
+        <Route path="/timetable" element={<TimaTable1 />} />
 
       </Routes>
 
